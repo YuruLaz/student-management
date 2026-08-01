@@ -58,7 +58,7 @@ def add_student(manager):
 
 
 def view_sorted(manager):
-    students = sorted(manager.students)
+    students = sorted(manager.students, reverse=True)
 
     if not students:
         print("No students yet.")

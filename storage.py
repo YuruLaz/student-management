@@ -13,7 +13,9 @@ DEFAULT_FILE = "data/students.txt"
 
 
 def save_students(students, filepath=DEFAULT_FILE):
-    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    directory = os.path.dirname(filepath)
+    if directory:
+        os.makedirs(directory, exist_ok=True)
 
     with open(filepath, "w", newline="", encoding="utf-8") as file:
         writer = csv.writer(file)
