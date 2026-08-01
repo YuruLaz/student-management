@@ -47,7 +47,6 @@ class Student(Person):
 
     @staticmethod
     def grade_rank(letter):
-        """Turn a letter grade into a number so it can be compared."""
         return GRADE_ORDER.index(letter)
 
     def __init__(self, name, number, grade):

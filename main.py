@@ -20,7 +20,6 @@ MENU = """
 
 
 def prompt_int(prompt):
-    """Keep asking until the user types a whole number."""
     while True:
         value = input(prompt)
         try:
@@ -30,7 +29,6 @@ def prompt_int(prompt):
 
 
 def prompt_name(prompt):
-    """Keep asking until the user types a non-empty name."""
     while True:
         name = input(prompt).strip()
         if name:
@@ -39,7 +37,6 @@ def prompt_name(prompt):
 
 
 def add_student(manager):
-    """Ask for name/roll number/grade and add a new student."""
     name = prompt_name("Name: ")
     roll_number = prompt_int("Roll number: ")
     grade = input("Grade (A-F): ")
@@ -59,7 +56,6 @@ def add_student(manager):
 
 
 def find_student(manager):
-    """Ask for a roll number and show that student's info if found."""
     roll_number = prompt_int("Roll number to find: ")
     student = manager.find_by_roll(roll_number)
 
@@ -71,7 +67,6 @@ def find_student(manager):
 
 
 def update_grade(manager):
-    """Ask for a roll number and a new grade, then apply the update."""
     roll_number = prompt_int("Roll number to update: ")
     new_grade = input("New grade (A-F): ")
 
@@ -89,7 +84,6 @@ def update_grade(manager):
 
 
 def delete_student(manager):
-    """Ask for a roll number and delete that student."""
     roll_number = prompt_int("Roll number to delete: ")
     deleted = manager.delete_student(roll_number)
 
@@ -101,7 +95,6 @@ def delete_student(manager):
 
 
 def main():
-    """Run the menu loop until the user chooses to exit."""
     manager = StudentManager()
     for student in load_students():
         manager.add_student(student)

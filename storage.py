@@ -12,7 +12,6 @@ DEFAULT_FILE = "data/students.txt"
 
 
 def save_students(students, filepath=DEFAULT_FILE):
-    """Write every student to filepath, one per line as name,roll,grade."""
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
 
     with open(filepath, "w") as file:
@@ -21,7 +20,6 @@ def save_students(students, filepath=DEFAULT_FILE):
 
 
 def load_students(filepath=DEFAULT_FILE):
-    """Read students back from filepath. Returns [] if the file doesn't exist."""
     students = []
 
     try:
