@@ -20,6 +20,7 @@ def save_students(students, filepath=DEFAULT_FILE):
 
 
 def load_students(filepath=DEFAULT_FILE):
+    """Read students from filepath, skip bad lines, return [] if missing."""
     students = []
 
     try:

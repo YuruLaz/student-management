@@ -40,6 +40,7 @@ class Student(Person):
 
     @staticmethod
     def validate_grade(grade):
+        """Check grade is a single letter in GRADE_ORDER, raise if not."""
         if not isinstance(grade, str) or len(grade) != 1 or grade.upper() not in GRADE_ORDER:
             raise InvalidGradeError(grade)
 

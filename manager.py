@@ -18,6 +18,7 @@ class StudentManager:
         return self._students
 
     def add_student(self, student: Student):
+        """Add student if roll number is unique, return False otherwise."""
         if self.find_by_roll(student.roll_number) is not None:
             return False
 

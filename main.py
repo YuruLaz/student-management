@@ -37,6 +37,7 @@ def prompt_name(prompt):
 
 
 def add_student(manager):
+    """Prompt for name/roll/grade, build a Student, and add it if valid."""
     name = prompt_name("Name: ")
     roll_number = prompt_int("Roll number: ")
     grade = input("Grade (A-F): ")
@@ -95,6 +96,7 @@ def delete_student(manager):
 
 
 def main():
+    """Load saved students, then run the menu loop until exit."""
     manager = StudentManager()
     for student in load_students():
         manager.add_student(student)
