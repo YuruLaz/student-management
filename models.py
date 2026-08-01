@@ -76,12 +76,16 @@ class Student(Person):
         return f"Student(name={self._name!r}, number={self._roll_number!r}, grade={self._grade!r})"
 
     def __lt__(self, other):
-        return isinstance(other, Student) and (
-            self.grade_rank(self._grade) < self.grade_rank(other._grade)
-        )
+        if not isinstance(other, Student):
+            return NotImplemented
+
+        return self.grade_rank(self._grade) < self.grade_rank(other._grade)
 
     def __eq__(self, other):
-        return isinstance(other, Student) and self._roll_number == other._roll_number
+        if not isinstance(other, Student):
+            return NotImplemented
+
+        return self._roll_number == other._roll_number
 
     def __hash__(self):
         return hash(self._roll_number)

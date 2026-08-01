@@ -15,11 +15,11 @@ class StudentManager:
 
     @property
     def students(self):
-        return self._students
+        return list(self._students)
 
     def add_student(self, student: Student):
         """Add student if roll number is unique, return False otherwise."""
-        if self.find_by_roll(student.roll_number) is not None:
+        if student in self._students:
             return False
 
         self._students.append(student)

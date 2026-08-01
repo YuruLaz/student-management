@@ -4,6 +4,7 @@ Has functions to save students to a text file and load them back,
 so student data survives between runs of the program.
 """
 
+import csv
 import os
 
 from models import Student, InvalidGradeError
@@ -14,27 +15,28 @@ DEFAULT_FILE = "data/students.txt"
 def save_students(students, filepath=DEFAULT_FILE):
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
 
-    with open(filepath, "w") as file:
+    with open(filepath, "w", newline="", encoding="utf-8") as file:
+        writer = csv.writer(file)
         for student in students:
-            file.write(f"{student.name},{student.roll_number},{student.grade}\n")
+            writer.writerow([student.name, student.roll_number, student.grade])
 
 
 def load_students(filepath=DEFAULT_FILE):
-    """Read students from filepath, skip bad lines, return [] if missing."""
+    """Read students from filepath, skip bad rows, return [] if missing."""
     students = []
 
     try:
-        with open(filepath, "r") as file:
-            for line in file:
-                line = line.strip()
-                if not line:
+        with open(filepath, "r", newline="", encoding="utf-8") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if not row:
                     continue
 
-                name, roll_number, grade = line.split(",")
-
                 try:
+                    name, roll_number, grade = row
                     students.append(Student(name, int(roll_number), grade))
-                except InvalidGradeError:
+                except (ValueError, InvalidGradeError):
+                    print(f"Skipping bad row in {filepath}: {row}")
                     continue
 
     except FileNotFoundError:

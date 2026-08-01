@@ -12,10 +12,11 @@ from storage import load_students, save_students
 MENU = """
 1. Add new student
 2. View all students
-3. Find student by roll number
-4. Update student grade
-5. Delete student
-6. Exit
+3. View all students sorted by grade
+4. Find student by roll number
+5. Update student grade
+6. Delete student
+7. Exit
 """
 
 
@@ -54,6 +55,18 @@ def add_student(manager):
 
     save_students(manager.students)
     print("Student added.")
+
+
+def view_sorted(manager):
+    students = sorted(manager.students)
+
+    if not students:
+        print("No students yet.")
+        return
+
+    for student in students:
+        student.display_info()
+        print("-" * 20)
 
 
 def find_student(manager):
@@ -110,12 +123,14 @@ def main():
         elif choice == "2":
             manager.view_all()
         elif choice == "3":
-            find_student(manager)
+            view_sorted(manager)
         elif choice == "4":
-            update_grade(manager)
+            find_student(manager)
         elif choice == "5":
-            delete_student(manager)
+            update_grade(manager)
         elif choice == "6":
+            delete_student(manager)
+        elif choice == "7":
             print("Goodbye.")
             break
         else:
