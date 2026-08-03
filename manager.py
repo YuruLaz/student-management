@@ -1,7 +1,7 @@
 """Manager module for the student management system.
 
 Has the StudentManager class, which keeps a list of Student objects
-and lets you add, view, search, and update them.
+and lets you add, view, search, and update.
 """
 
 from models import Student
