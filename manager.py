@@ -27,7 +27,7 @@ class StudentManager:
 
     def view_all(self):
         if not self._students:
-            print("No students yet.")
+            print("No students yet")
             return
 
         for student in self._students:

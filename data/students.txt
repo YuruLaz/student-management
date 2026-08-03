@@ -1,0 +1,3 @@
+keko,101,B
+madi,103,A
+nana,107,A
